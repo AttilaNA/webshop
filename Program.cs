@@ -1,7 +1,14 @@
+using WebShop.Models;
+using WebShop.Others.Daos.Storage;
+using WebShop.Others.Storage;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IProductDao, ProductStorage>();
+builder.Services.AddSingleton<ICategoryDao, CategoryStorage>();
+builder.Services.AddSingleton<ISupplierDao, SupplierStorage>();
 
 var app = builder.Build();
 
@@ -22,6 +29,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Product}/{action=Index}/{id?}");
+    pattern: "{controller=WebShop}/{action=Index}/{id?}");
 
 app.Run();

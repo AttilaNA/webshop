@@ -9,7 +9,11 @@
 
 ## Tasks
 
-### _First_
+### _Create environment_
+
+I want to have a version-controlled project, where a webserver serves requests. This allows me to start developing in a sandboxed environment.
+
+1. When starting up the ASP.NET Core application web-server, the server returns an index page.
 
 ### _Second_
 

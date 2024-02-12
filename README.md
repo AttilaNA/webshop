@@ -2,10 +2,14 @@
 
 ## Goal of the project
 
-* Create an ASP.NET Core web application using an in-memory database.
+* Create an ASP.NET Core web application using an in-memory database through the DAO (Data Access Object) pattern.
 * Use the DAO design pattern and dependency injection.
 * Log data in a specified format.
 * Handle fractional monetary unit appropriately with decimal.
+* Advanced OOP concepts, such as inheritance, are used in the project. There is at least one interface implemented.
+* The project maintains the MVC architectural pattern.
+* The project maintains the three-layer structure of controllers handling HTTP, service objects handling business logic, and DAOs handling data access.
+* Use fake payment implementations. It is not required to integrate real payment services.
 
 ## Tasks
 

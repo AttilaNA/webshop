@@ -4,11 +4,11 @@ using WebShop.Models;
 
 namespace WebShop.Controllers;
 
-public class ProductController : Controller
+public class WebShopController : Controller
 {
-    private readonly ILogger<ProductController> _logger;
+    private readonly ILogger<WebShopController> _logger;
 
-    public ProductController(ILogger<ProductController> logger)
+    public WebShopController(ILogger<WebShopController> logger)
     {
         _logger = logger;
     }

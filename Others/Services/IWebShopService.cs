@@ -7,4 +7,6 @@ public interface IWebShopService
     public Category GetProductCategory(int categoryId);
 
     public IEnumerable<Product> GetProductsForCategory(int categoryId);
+    
+    public IEnumerable<Product> GetProducts();
 }

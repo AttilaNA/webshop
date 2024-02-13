@@ -28,7 +28,7 @@ public class ProductStorage : IProductDao
 
     public IEnumerable<Product> GetAll()
     {
-        throw new NotImplementedException();
+        return Products;
     }
 
     public IEnumerable<Product> GetBy(Supplier supplier)

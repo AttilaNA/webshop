@@ -19,7 +19,8 @@ public class WebShopController : Controller
 
     public IActionResult Index()
     {
-        var products = _webShopService.GetProductsForCategory(1);
+        // var products = _webShopService.GetProductsForCategory(1);
+        var products = _webShopService.GetProducts();
         return View(products.ToList());
     }
 

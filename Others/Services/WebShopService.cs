@@ -27,4 +27,9 @@ public class WebShopService : IWebShopService
     {
         return _categoryStorage.Get(categoryId).Products;
     }
+
+    public IEnumerable<Product> GetProducts()
+    {
+        return _productStorage.GetAll();
+    }
 }

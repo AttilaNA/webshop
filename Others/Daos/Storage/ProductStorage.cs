@@ -1,5 +1,4 @@
 using WebShop.Models;
-using WebShop.Others.Storage;
 
 namespace WebShop.Others.Daos.Storage;
 
@@ -9,7 +8,7 @@ public class ProductStorage : IProductDao
 
     public void Add(Product item)
     {
-        throw new NotImplementedException();
+        Products.Add(item);
     }
 
     public void Remove(int id)
@@ -32,7 +31,7 @@ public class ProductStorage : IProductDao
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Product> GetBy(Category productCategory)
+    public IEnumerable<Product> GetBy(Category category)
     {
         throw new NotImplementedException();
     }

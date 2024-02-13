@@ -1,5 +1,4 @@
 using WebShop.Models;
-using WebShop.Others.Storage;
 
 namespace WebShop.Others.Daos.Storage;
 
@@ -9,7 +8,7 @@ public class CategoryStorage : ICategoryDao
 
     public void Add(Category item)
     {
-        throw new NotImplementedException();
+        Categories.Add(item);
     }
 
     public void Remove(int id)
@@ -19,7 +18,7 @@ public class CategoryStorage : ICategoryDao
 
     public Category Get(int id)
     {
-        throw new NotImplementedException();
+        return Categories.Select(category => category).First(category => category.Id == id);
     }
 
     public IEnumerable<Category> GetAll()

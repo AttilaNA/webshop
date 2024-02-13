@@ -1,6 +1,6 @@
-using WebShop.Models;
 using WebShop.Others.Daos.Storage;
-using WebShop.Others.Storage;
+using WebShop.Others.Daos;
+using WebShop.Others.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IProductDao, ProductStorage>();
 builder.Services.AddSingleton<ICategoryDao, CategoryStorage>();
 builder.Services.AddSingleton<ISupplierDao, SupplierStorage>();
+builder.Services.AddSingleton<IWebShopService, WebShopService>();
 
 var app = builder.Build();
 

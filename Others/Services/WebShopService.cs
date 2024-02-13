@@ -1,5 +1,5 @@
 using WebShop.Models;
-using WebShop.Others.Storage;
+using WebShop.Others.Daos;
 
 namespace WebShop.Others.Services;
 
@@ -25,7 +25,6 @@ public class WebShopService : IWebShopService
 
     public IEnumerable<Product> GetProductsForCategory(int categoryId)
     {
-        Category category = _categoryStorage.Get(categoryId);
-        return _productStorage.GetBy(category);
+        return _categoryStorage.Get(categoryId).Products;
     }
 }

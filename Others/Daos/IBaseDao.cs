@@ -1,4 +1,4 @@
-namespace WebShop.Others.Storage;
+namespace WebShop.Others.Daos;
 
 public interface IBaseDao<T>
 {

@@ -1,6 +1,6 @@
 using WebShop.Models;
 
-namespace WebShop.Others.Storage;
+namespace WebShop.Others.Daos;
 
 public interface ICategoryDao : IBaseDao<Category>
 {

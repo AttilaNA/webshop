@@ -4,7 +4,12 @@ namespace WebShop.Others.Daos.Storage;
 
 public class ProductStorage : IProductDao
 {
-    private List<Product> Products { get; set; } = new List<Product>();
+    private List<Product> Products { get; set; }
+
+    public ProductStorage()
+    {
+        Products = new List<Product>();
+    }
 
     public void Add(Product item)
     {

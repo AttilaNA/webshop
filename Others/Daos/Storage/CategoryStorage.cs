@@ -4,7 +4,12 @@ namespace WebShop.Others.Daos.Storage;
 
 public class CategoryStorage : ICategoryDao
 {
-    private List<Category> Categories { get; set; } = new List<Category>();
+    private List<Category> Categories { get; set; }
+
+    public CategoryStorage()
+    {
+        Categories = new List<Category>();
+    }
 
     public void Add(Category item)
     {

@@ -5,7 +5,19 @@ namespace WebShop.Others;
 
 public class DataGenerator
 {
+    private readonly IProductDao _productStorage;
+
+    private readonly ICategoryDao _categoryStorage;
+
+    private readonly ISupplierDao _supplierStorage;
+    
     public DataGenerator(IProductDao productStorage, ICategoryDao categoryStorage, ISupplierDao supplierStorage)
+    {
+        _productStorage = productStorage;
+        _categoryStorage = categoryStorage;
+        _supplierStorage = supplierStorage;
+    }
+    public void Populate()
     {
         Supplier amazon = new Supplier{Id = 1, Name = "Amazon", Description = "Digital content and services"};
         Supplier lenovo = new Supplier{Id = 2, Name = "Lenovo", Description = "Computers"};
@@ -19,11 +31,11 @@ public class DataGenerator
         tablet.Products.Add(amazonFire);
         tablet.Products.Add(lenovoIdeaPad);
         tablet.Products.Add(amazonFireHd);
-        productStorage.Add(amazonFire);
-        productStorage.Add(lenovoIdeaPad);
-        productStorage.Add(amazonFireHd);
-        categoryStorage.Add(tablet);
-        supplierStorage.Add(amazon);
-        supplierStorage.Add(lenovo);
+        _productStorage.Add(amazonFire);
+        _productStorage.Add(lenovoIdeaPad);
+        _productStorage.Add(amazonFireHd);
+        _categoryStorage.Add(tablet);
+        _supplierStorage.Add(amazon);
+        _supplierStorage.Add(lenovo);
     }
 }

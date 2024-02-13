@@ -19,7 +19,8 @@ public class WebShopController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var products = _webShopService.GetProductsForCategory(1);
+        return View(products.ToList());
     }
 
     public IActionResult Privacy()

@@ -7,24 +7,21 @@
 <div class="container">
     @foreach (var element in Model)
     {
-        <div class="" style="display: inline-block; max-width: 350px; height: 350px">
-            <div class="card">
-                <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
-
-                <div class="card-body">
-                    <h5 class="card-title   text-center">
-                        Product
-                        @{ var num = Model.IndexOf(element) + 1;}
-                        @num
-                    </h5>
-                    <h5 class="card-title">@element.Name</h5>
-                    <p class="card-text">@element.Description.</p>
-                    <p class="card-text">Category: @element.Category.Department</p>
-                    <p class="card-text">Supplier: @element.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                    <a href="" type="button" class="" style="float: bottom">Add To Cart</a>
-                </div>
-            </div>
+        <div class="card">
+            <img src="img/@(element.Name).jpg">
+            <h5 class="">
+                Product
+                @{ var num = Model.IndexOf(element) + 1; }
+                @num
+            </h5>
+            <h5 class="" style="align-self: flex-start">@element.Name</h5>
+            <p class="" style="align-self: flex-start">@element.Description.</p>
+            <p class="" style="align-self: flex-start">Category: @element.Category.Department</p>
+            <p class="" style="align-self: flex-start">Supplier: @element.Supplier.Name</p>
+            <p class="">
+                <strong>Price: @element.DefaultPrice.ToString("C2")</strong>
+            </p>
+            <a href="" type="button" class="btn btn-primary">Add To Cart</a>
         </div>
     }
 </div>

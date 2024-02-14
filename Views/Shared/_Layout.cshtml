@@ -1,34 +1,38 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebShop</title>
     
     @* Default CSS style provided by the framework*@
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     
-    <link rel="stylesheet" href="~/css/mycss/main.css" asp-append-version="true" />
+    @* My CSS style*@
+    <link rel="stylesheet" href="~/css/mystyle.css" asp-append-version="true" />
     
 </head>
 <body>
-    <header>
-    </header>
-    <div class="container">
+<header>
+    <nav>
+        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index">Home</a>
+        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
+        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Error">Error</a>
+    </nav>
+</header>
+    <div class="">
         <main role="main" class="">
+        <div class="navbar-placeholder"></div>
             @RenderBody()
         </main>
     </div>
 
     <footer class="">
-        <div class="container">
-            &copy; 2024 - WebShop - <a asp-area="" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
-        </div>
     </footer>
 
     @* Default CSS style provided by the framework*@
-    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

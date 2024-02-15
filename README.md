@@ -21,10 +21,10 @@ I want to have a version-controlled project, where a webserver serves requests. 
 
 ### _Product list_
 
-I want to have an index page, where I can see the list of Products in a default Product Category.
+I want to have an index page, where I can see the list of Products in a certain Product Category.
 
-1. There are Products and a default Product Category in the application. Opening the root URL (/) displays a list of Products with details such as product title, description, image, price.
-
+Opening the root URL (/) displays a list of all Products with details such as product title, description, image, price.
+Products can be listed based on their category in the application.
 
 
 ### _..._

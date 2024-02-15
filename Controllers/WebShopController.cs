@@ -17,13 +17,17 @@ public class WebShopController : Controller
         _webShopService = webShopService;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(int? id)
     {
-        // var products = _webShopService.GetProductsForCategory(1);
-        var products = _webShopService.GetProducts();
-        return View(products.ToList());
+        if (id == null)
+        {
+            var products = _webShopService.GetProducts();
+            return View(products.ToList());
+        }
+        var productsByCategory = _webShopService.GetProductsForCategory((int)id);
+        return View(productsByCategory.ToList());
     }
-
+    
     public IActionResult Privacy()
     {
         return View();

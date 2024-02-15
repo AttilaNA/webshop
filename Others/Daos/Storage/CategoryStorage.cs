@@ -28,6 +28,6 @@ public class CategoryStorage : ICategoryDao
 
     public IEnumerable<Category> GetAll()
     {
-        throw new NotImplementedException();
+        return Categories;
     }
 }

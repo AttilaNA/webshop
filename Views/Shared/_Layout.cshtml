@@ -15,20 +15,18 @@
 </head>
 <body>
 <header>
-    <nav>
-        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index">Home</a>
-        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
-    </nav>
+    @await Component.InvokeAsync("NavBar")
 </header>
-    <div class="">
-        <main role="main" class="">
-        <div class="navbar-placeholder"></div>
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="">
-    </footer>
+<content class="">
+    <main role="main" class="">
+    <div class="navbar-placeholder"></div>
+        @RenderBody()
+    </main>
+</content>
+
+<footer class="">
+</footer>
 
     @* Default CSS style provided by the framework*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

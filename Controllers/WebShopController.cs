@@ -16,7 +16,7 @@ public class WebShopController : Controller
         _logger = logger;
         _webShopService = webShopService;
     }
-
+    
     public IActionResult Index(int? id, string filter)
     {
         if (id == null)
@@ -30,7 +30,7 @@ public class WebShopController : Controller
             var productsBySupplier = _webShopService.GetProductsForSupplier((int)id);
             return View(productsBySupplier.ToList());
         }
-        
+
         var productsByCategory = _webShopService.GetProductsForCategory((int)id);
         return View(productsByCategory.ToList());
     }

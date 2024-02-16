@@ -23,11 +23,11 @@ public class SupplierStorage : ISupplierDao
 
     public Supplier Get(int id)
     {
-        throw new NotImplementedException();
+        return Suppliers.Select(supplier => supplier).First(supplier => supplier.Id == id);
     }
 
     public IEnumerable<Supplier> GetAll()
     {
-        throw new NotImplementedException();
+        return Suppliers;
     }
 }

@@ -1,0 +1,11 @@
+@model List<Supplier>
+
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Suppliers
+</button>
+<ul class="dropdown-menu">
+    @foreach (var supplier in Model)
+    {
+        <li><a class="dropdown-item" asp-controller="WebShop" asp-action="Index" asp-route-id="@supplier.Id" asp-route-filter="supplier">@supplier.Name</a></li>
+    }
+</ul>

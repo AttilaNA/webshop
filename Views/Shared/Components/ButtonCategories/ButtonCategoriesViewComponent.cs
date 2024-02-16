@@ -4,11 +4,11 @@ using WebShop.Others.Daos.Storage;
 
 namespace WebShop.Views.Shared.Components.NavBar;
 
-public class NavBarViewComponent : ViewComponent
+public class ButtonCategoriesViewComponent : ViewComponent
 {
     private readonly ICategoryDao _categoryStorage;
 
-    public NavBarViewComponent(ICategoryDao categoryStorage)
+    public ButtonCategoriesViewComponent(ICategoryDao categoryStorage)
     {
         _categoryStorage = categoryStorage;
     }

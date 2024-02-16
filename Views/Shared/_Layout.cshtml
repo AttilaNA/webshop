@@ -15,7 +15,12 @@
 </head>
 <body>
 <header>
-    @await Component.InvokeAsync("NavBar")
+    <nav>
+        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">Home</a>
+        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
+        @await Component.InvokeAsync("ButtonCategories")
+        @await Component.InvokeAsync("ButtonSuppliers")
+    </nav>
 </header>
 
 <content class="">

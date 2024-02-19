@@ -9,9 +9,12 @@ namespace WebShop.Others.Services
         
         private IUserDao _userStorage;
 
-        public UserService(IUserDao userStorage)
+        private ICartDao _cartStorage;
+
+        public UserService(IUserDao userStorage, ICartDao cartStorage)
         {
             _userStorage = userStorage;
+            _cartStorage = cartStorage;
         }
 
         public void CrateUser()
@@ -28,12 +31,9 @@ namespace WebShop.Others.Services
                 Cart = new Cart(),
                 Id = lastUser == null ? 1 : lastUser.Id + 1
             };
-            _userStorage.Add(newUser);
-        }
 
-        private int getUniqId()
-        {
-            throw new NotImplementedException();
+            _cartStorage.Add(newUser.Cart);
+            _userStorage.Add(newUser);
         }
 
         public void RemoveUser()
@@ -46,5 +46,6 @@ namespace WebShop.Others.Services
             CrateUser();
             return _userStorage.GetAll().OrderByDescending(x => x.Id).First();
         }
+
     }
 }

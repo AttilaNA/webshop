@@ -6,8 +6,7 @@ using WebShop.Models;
 
 namespace WebShop.Others.Daos
 {
-    public interface ICartDao : IBaseDao<User>
-    {
-        
+    public interface ICartDao : IBaseDao<Cart>
+    {     
     }
 }

@@ -15,22 +15,22 @@ namespace WebShop.Others.Daos.Storage
             Carts = new List<Cart>();
         }
 
-        public void Add(User item)
+        public void Add(Cart item)
         {
-            throw new NotImplementedException();
-        }
-
-        public User Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<User> GetAll()
-        {
-            throw new NotImplementedException();
+            Carts.Add(item);
         }
 
         public void Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cart Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Cart> GetAll()
         {
             throw new NotImplementedException();
         }

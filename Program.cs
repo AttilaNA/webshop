@@ -10,6 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IProductDao, ProductStorage>();
 builder.Services.AddSingleton<ICategoryDao, CategoryStorage>();
 builder.Services.AddSingleton<ISupplierDao, SupplierStorage>();
+builder.Services.AddSingleton<ICartDao, CartStorage>();
+builder.Services.AddSingleton<IUserDao, UserStorage>();
 builder.Services.AddSingleton<IWebShopService, WebShopService>();
 builder.Services.AddSingleton<DataGenerator>();
 

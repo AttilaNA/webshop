@@ -10,12 +10,15 @@ public class WebShopService : IWebShopService
     private readonly ICategoryDao _categoryStorage;
 
     private readonly ISupplierDao _supplierStorage;
+
+    private readonly ICartDao _cartStorage;
     
-    public WebShopService(IProductDao productStorage, ICategoryDao categoryStorage, ISupplierDao supplierStorage)
+    public WebShopService(IProductDao productStorage, ICategoryDao categoryStorage, ISupplierDao supplierStorage, ICartDao cartDao)
     {
         _productStorage = productStorage;
         _categoryStorage = categoryStorage;
         _supplierStorage = supplierStorage;
+        _cartStorage = cartDao;
     }
     
     public Category GetProductCategory(int categoryId)

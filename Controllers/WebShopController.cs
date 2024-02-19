@@ -11,10 +11,13 @@ public class WebShopController : Controller
 
     private readonly IWebShopService _webShopService;
 
-    public WebShopController(ILogger<WebShopController> logger, IWebShopService webShopService)
+    private readonly IUserService _userService;
+
+    public WebShopController(ILogger<WebShopController> logger, IWebShopService webShopService, IUserService userService)
     {
         _logger = logger;
         _webShopService = webShopService;
+        _userService = userService;
     }
     
     public IActionResult Index(int? id, string filter)

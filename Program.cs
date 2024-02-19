@@ -13,6 +13,7 @@ builder.Services.AddSingleton<ISupplierDao, SupplierStorage>();
 builder.Services.AddSingleton<ICartDao, CartStorage>();
 builder.Services.AddSingleton<IUserDao, UserStorage>();
 builder.Services.AddSingleton<IWebShopService, WebShopService>();
+builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddSingleton<DataGenerator>();
 
 var app = builder.Build();

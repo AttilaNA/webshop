@@ -13,7 +13,7 @@ namespace WebShop.Others.Daos.Storage
 
         public void Add(User item)
         {
-            throw new NotImplementedException();
+            Users.Add(item);
         }
 
         public User Get(int id)
@@ -23,7 +23,7 @@ namespace WebShop.Others.Daos.Storage
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return Users;
         }
 
         public void Remove(int id)

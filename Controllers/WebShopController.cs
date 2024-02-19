@@ -22,6 +22,8 @@ public class WebShopController : Controller
     
     public IActionResult Index(int? id, string filter)
     {
+        SetUserInCookiesIfNecessary();
+        
         if (id == null)
         {
             var products = _webShopService.GetProducts();
@@ -37,7 +39,18 @@ public class WebShopController : Controller
         var productsByCategory = _webShopService.GetProductsForCategory((int)id);
         return View(productsByCategory.ToList());
     }
-    
+
+    private void SetUserInCookiesIfNecessary()
+    {
+        var cookies = Request.Cookies;
+        var user = cookies["user"];
+        if (user == null)
+        {
+            var newUser = _userService.GetNewUser();
+            Response.Cookies.Append("user", newUser.Id.ToString());
+        }
+    }
+
     public IActionResult Privacy()
     {
         return View();

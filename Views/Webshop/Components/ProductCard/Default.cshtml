@@ -1,6 +1,6 @@
 @model Product
 
-<div class="card">
+<form class="card" asp-controller="WebShop" asp-action="AddToCart" method="post">
     <img src="~/img/@(Model.Name).jpg">
     <h5 class="">Product @Model.Id</h5>
     <h5 class="" style="align-self: flex-start">@Model.Name</h5>
@@ -10,5 +10,6 @@
     <p class="">
         <strong>Price: @Model.DefaultPrice.ToString("C2")</strong>
     </p>
-    <a href="" type="button" class="btn btn-primary">Add To Cart</a>
-</div>
+    <input type="hidden" asp-for="Id">
+    <button type="submit" class="btn btn-primary">Add To Cart</button>
+</form>

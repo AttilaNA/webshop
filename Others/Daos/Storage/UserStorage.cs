@@ -18,7 +18,7 @@ namespace WebShop.Others.Daos.Storage
 
         public User Get(int id)
         {
-            throw new NotImplementedException();
+            return Users.Find(user => user.Id == id);
         }
 
         public IEnumerable<User> GetAll()
@@ -30,5 +30,6 @@ namespace WebShop.Others.Daos.Storage
         {
             throw new NotImplementedException();
         }
+
     }
 }

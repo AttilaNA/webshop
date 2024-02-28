@@ -11,4 +11,6 @@ public interface IWebShopService
     public IEnumerable<Product> GetProductsForSupplier(int supplierId);
     
     public IEnumerable<Product> GetProducts();
+
+    public Product GetProductById(int id);
 }

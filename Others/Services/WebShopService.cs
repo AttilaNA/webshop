@@ -37,4 +37,9 @@ public class WebShopService : IWebShopService
     {
         return _productStorage.GetAll();
     }
+
+    public Product GetProductById(int id)
+    {
+        return _productStorage.Get(id);
+    }
 }

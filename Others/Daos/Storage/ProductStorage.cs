@@ -23,7 +23,7 @@ public class ProductStorage : IProductDao
 
     public Product Get(int id)
     {
-        throw new NotImplementedException();
+        return Products.Select(product => product).FirstOrDefault(product => product.Id == id);
     }
 
     public IEnumerable<Product> GetAll()

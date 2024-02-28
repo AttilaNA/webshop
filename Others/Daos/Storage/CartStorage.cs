@@ -32,7 +32,13 @@ namespace WebShop.Others.Daos.Storage
 
         public IEnumerable<Cart> GetAll()
         {
-            throw new NotImplementedException();
+            return Carts;
+        }
+
+        public Cart GetCartByUserId(int userId)
+        {
+            var cart = Carts.Find( cart => cart.user.Id == userId);
+            return cart;
         }
     }
 }

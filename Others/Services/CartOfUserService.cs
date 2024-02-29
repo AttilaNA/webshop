@@ -39,7 +39,7 @@ namespace WebShop.Others.Services
             };
 
             // Cart has a user, which must be the same as the user who own the cart
-            newUser.Cart.user = newUser;
+            newUser.Cart.User = newUser;
 
             _cartStorage.Add(newUser.Cart);
             _userStorage.Add(newUser);
@@ -80,6 +80,11 @@ namespace WebShop.Others.Services
         public IEnumerable<User> GetAllUsers()
         {
             return _userStorage.GetAll();
+        }
+
+        public Cart GetCartByUserId(int id)
+        {
+            return _cartStorage.GetCartByUserId(id);
         }
     }
 }

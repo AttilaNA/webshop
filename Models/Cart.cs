@@ -4,7 +4,7 @@ namespace WebShop.Models
     {
         public List<Product> Products { get; set; }
 
-        public User user { get; set; }
+        public User? User { get; set; }
 
         public Cart()
         {

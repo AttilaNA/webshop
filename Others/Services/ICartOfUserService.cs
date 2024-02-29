@@ -13,5 +13,6 @@ namespace WebShop.Others.Services
         void AddToCart(Product product, int userId);
         IEnumerable<Cart> GetAllCarts();
         IEnumerable<User> GetAllUsers();
+        Cart GetCartByUserId(int id);
     }
 }

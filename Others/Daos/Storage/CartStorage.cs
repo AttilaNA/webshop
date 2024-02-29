@@ -37,7 +37,7 @@ namespace WebShop.Others.Daos.Storage
 
         public Cart GetCartByUserId(int userId)
         {
-            var cart = Carts.Find( cart => cart.user.Id == userId);
+            var cart = Carts.Find( cart => cart.User.Id == userId);
             return cart;
         }
     }

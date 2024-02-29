@@ -1,43 +1,46 @@
 ﻿<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebShop</title>
-    
-    @* Default CSS style provided by the framework*@
-    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    
-    @* My CSS style*@
-    <link rel="stylesheet" href="~/css/mystyle.css" asp-append-version="true" />
-    
-</head>
-<body>
-<header>
-    <nav>
-        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">Home</a>
-        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
-        @await Component.InvokeAsync("ButtonCategories")
-        @await Component.InvokeAsync("ButtonSuppliers")
-    </nav>
-</header>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - WebShop</title>
+        
+        @* Default CSS style provided by the framework*@
+        @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
 
-<content class="">
-    <main role="main" class="">
-    <div class="navbar-placeholder"></div>
-        @RenderBody()
-    </main>
-</content>
+        @* Bootstrap CSS style provided by the framework*@ 
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        
+        @* My CSS style*@
+        <link rel="stylesheet" href="~/css/mystyle.css" asp-append-version="true" />
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">Home</a>
+                <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
+                @await Component.InvokeAsync("ButtonCategories")
+                @await Component.InvokeAsync("ButtonSuppliers")
+                @await Component.InvokeAsync("CartOfUser")
+            </nav>
+        </header>
 
-<footer class="">
-</footer>
+        <content class="">
+            <main role="main" class="">
+            <div class="navbar-placeholder"></div>
+            @RenderBody()
+            </main>
+        </content>
 
-    @* Default CSS style provided by the framework*@
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <footer class="">
+        </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+        @* Bootstrap CSS style provided by the framework*@
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>

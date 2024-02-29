@@ -1,0 +1,25 @@
+@model Cart
+
+@{
+    if(Model.Products.Count == 0)
+    {
+        if(Model.User == null)
+        {
+            <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">
+                <span>User unknown</span>
+            </a>
+        } else
+        {
+            <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">
+                <span>Cart of user @Model.User.Id is empty</span>
+            </a>
+        }
+        
+    } else
+    {
+        <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">
+            <span>User @Model.User.Id 's Cart contains @Model.Products.Count items</span>
+        </a>
+    }
+}
+

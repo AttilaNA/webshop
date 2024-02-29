@@ -23,7 +23,7 @@ public class WebShopController : Controller
     public IActionResult Index(int? id, string filter)
     {
         SetUserInCookiesIfNecessary();
-        
+
         if (id == null)
         {
             var products = _webShopService.GetProducts();
@@ -42,10 +42,24 @@ public class WebShopController : Controller
 
     private void SetUserInCookiesIfNecessary()
     {
-        var cookies = Request.Cookies;
-        var user = cookies["user"];
+        var user = Request.Cookies["user"];
+        
         if (user == null)
         {
+            var newUser = _cartOfUserService.GetNewUser();
+            Response.Cookies.Append("user", newUser.Id.ToString());
+        }
+
+        // Solve data persistence issue.
+        // User and its cart is created with the first GET request if there is no user key in cookies.
+        // If app is restarted and user key remains in cookies neider user nor cart will be instantiated.
+        // This caused null reference exeption error.
+        // Issue is fixed for development purpose until in-memory-database is in use.
+        var carts = _cartOfUserService.GetAllCarts();
+
+        if (carts.Count() == 0)
+        {
+            Response.Cookies.Delete("user");
             var newUser = _cartOfUserService.GetNewUser();
             Response.Cookies.Append("user", newUser.Id.ToString());
         }

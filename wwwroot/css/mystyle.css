@@ -1,12 +1,17 @@
-nav {
-    padding: 10px;
+nav {  
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: white;
     z-index: 1;
+    
+    padding: 10px;
     border-bottom: 1px solid rgba(0,0,0,.125);
+    background: white;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 img {

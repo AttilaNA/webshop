@@ -18,11 +18,15 @@
     <body>
         <header>
             <nav>
-                <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">Home</a>
-                <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
-                @await Component.InvokeAsync("ButtonCategories")
-                @await Component.InvokeAsync("ButtonSuppliers")
-                @await Component.InvokeAsync("CartOfUser")
+                <span>
+                    <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Index" asp-route-id="">Home</a>
+                    <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="Privacy">Privacy</a>
+                    @await Component.InvokeAsync("ButtonCategories")
+                    @await Component.InvokeAsync("ButtonSuppliers")
+                </span>
+                <span>
+                    @await Component.InvokeAsync("CartOfUser")
+                </span>
             </nav>
         </header>
 

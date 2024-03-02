@@ -20,12 +20,12 @@ img {
     padding-top: 10px
 }
 
-.container {
+.my-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.card {
+.my-card {
     align-items: center;
     justify-content: space-between;
     padding: 10px;
@@ -38,4 +38,18 @@ img {
 .navbar-placeholder {
     height: calc(2*58px);
     background: white;
+}
+
+/* cart */
+
+.card-in-cart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.product-in-cart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }

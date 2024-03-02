@@ -29,6 +29,17 @@ namespace WebShop.Views.Shared.Components.CartOfUser
             }
 
             var userCart = _cartOfUserService.GetCartByUserId(int.Parse(userId));
+
+            // Implement different behavior if user id is not removed from cookies
+            if (userCart == null)
+            {
+                // Use an empty cart to handle the scenario in view
+                var emptyCart = new Cart
+                {
+                    User = null
+                };
+                return View(emptyCart);
+            }
             return View(userCart);
         }
     }

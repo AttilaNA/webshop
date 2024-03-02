@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Cart";
+}
+@model Cart
+
+<div class="container">
+    @foreach (var product in Model.Products)
+    {
+        <div class="card card-in-cart" style="padding-top: 10px;" asp-controller="WebShop" asp-action="" method="">
+            <div>
+                <div class="product-in-cart">
+                    <div style="padding-left: 10px; display: flex; flex-direction: column; align-items: center">
+                        <h5 class="">Product @product.Id</h5>
+                        <h5 class="" style="align-self: flex-start">@product.Name</h5>
+                    </div>
+                    <img src="~/img/@(product.Name).jpg" style="padding: 0 0 0 10px;">
+                    <div style="padding-left: 10px;">
+                        <p class="" style="align-self: flex-start">Category: @product.Category.Department</p>
+                        <p class="" style="align-self: flex-start">Supplier: @product.Supplier.Name</p>
+                        <p class="">
+                            <strong>Price: @product.DefaultPrice.ToString("C2")</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-left: 10px;">
+                <input type="number" min="0" asp-for="@product.Id">
+            </div>
+        </div>
+    }
+</div>

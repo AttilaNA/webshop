@@ -83,5 +83,20 @@ public class WebShopController : Controller
         var product = _webShopService.GetProductById(productFormWithId.Id);
         _cartOfUserService.AddToCart(product, int.Parse(Request.Cookies["user"]));
         return RedirectToAction(nameof(Index));
-    }   
+    }
+
+    public IActionResult CheckOutCart()
+    {
+        var userId = Request.Cookies["user"];
+
+        // Only allow the normal flow further if userId in not null
+        // Otherwise 'ArgumentNullException: Parameter value cannot be null' exeption occure
+        if (userId == null)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
+        var userCart = _cartOfUserService.GetCartByUserId(int.Parse(userId));
+        return View(userCart);
+    } 
 }

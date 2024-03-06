@@ -117,4 +117,13 @@ public class WebShopController : Controller
         var userCart = _cartOfUserService.GetCartByUserId(userId);
         return View("CheckOutCart", userCart);
     }
+
+    public IActionResult RemoveProductFromCart(int id)
+    {
+        var product = _webShopService.GetProductById(id);
+        var userId = int.Parse(Request.Cookies["user"]);
+        _cartOfUserService.RemoveAllProductsFromCart(product, userId);
+        var userCart = _cartOfUserService.GetCartByUserId(userId);
+        return View("CheckOutCart", userCart);
+    }
 }

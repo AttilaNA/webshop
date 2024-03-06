@@ -78,6 +78,12 @@ namespace WebShop.Others.Services
             cart.Products.Remove(product);
         }
 
+        public void RemoveAllProductsFromCart(Product product, int userId)
+        {
+            var cart = _cartStorage.GetCartByUserId(userId);
+            cart.Products.RemoveAll(x => x == product);
+        }
+
         public IEnumerable<Cart> GetAllCarts()
         {
             return _cartStorage.GetAll();
@@ -92,5 +98,6 @@ namespace WebShop.Others.Services
         {
             return _cartStorage.GetCartByUserId(id);
         }
+
     }
 }

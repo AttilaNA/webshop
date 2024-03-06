@@ -76,11 +76,9 @@ public class WebShopController : Controller
         return View(new Error { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    
-    [HttpPost]
-    public async Task<ActionResult> AddToCart(Product productFormWithId)
+    public async Task<ActionResult> AddToCart(int id)
     {
-        var product = _webShopService.GetProductById(productFormWithId.Id);
+        var product = _webShopService.GetProductById(id);
         _cartOfUserService.AddToCart(product, int.Parse(Request.Cookies["user"]));
         return RedirectToAction(nameof(Index));
     }

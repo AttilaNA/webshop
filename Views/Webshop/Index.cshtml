@@ -6,6 +6,17 @@
 <div class="container my-container">
     @foreach (var element in Model)
     {
-        @await Component.InvokeAsync("ProductCard", element)
+        <div class="card my-card" asp-controller="WebShop" asp-action="AddToCart" method="post">
+            <img src="~/img/@(element.Name).jpg">
+            <h5 class="">Product @element.Id</h5>
+            <h5 class="" style="align-self: flex-start">@element.Name</h5>
+            <p class="" style="align-self: flex-start">@element.Description.</p>
+            <p class="" style="align-self: flex-start">Category: @element.Category.Department</p>
+            <p class="" style="align-self: flex-start">Supplier: @element.Supplier.Name</p>
+            <p class="">
+                <strong>Price: @element.DefaultPrice.ToString("C2")</strong>
+            </p>
+            <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="AddToCart" asp-route-id="@element.Id">Add To Cart</a>
+        </div>
     }
 </div>

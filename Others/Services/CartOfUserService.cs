@@ -56,11 +56,6 @@ namespace WebShop.Others.Services
             return _userStorage.GetAll().OrderByDescending(x => x.Id).First();
         }
 
-        public void AddProduct(Product product, User user)
-        {
-            throw new NotImplementedException();
-        }
-
         public User GetUserById(int id)
         {
             return _userStorage.Get(id);

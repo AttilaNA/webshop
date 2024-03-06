@@ -98,5 +98,14 @@ public class WebShopController : Controller
 
         var userCart = _cartOfUserService.GetCartByUserId(int.Parse(userId));
         return View(userCart);
-    } 
+    }
+
+    public IActionResult IncrementProduct(int id)
+    {
+        var product = _webShopService.GetProductById(id);
+        var userId = int.Parse(Request.Cookies["user"]);
+        _cartOfUserService.AddToCart(product, userId);
+        var userCart = _cartOfUserService.GetCartByUserId(userId);
+        return View("CheckOutCart", userCart);
+    }
 }

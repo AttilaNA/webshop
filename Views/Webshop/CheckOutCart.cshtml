@@ -3,11 +3,10 @@
 }
 @model Cart
 
-<div class="container" style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        @{
-            Dictionary<Product, int> products = new Dictionary<Product, int>();
-            @foreach (var product in Model.Products)
+<div class="container" style="display: flex; flex-wrap: wrap;">
+    @{
+        Dictionary<Product, int> products = new Dictionary<Product, int>();
+            foreach (var product in Model.Products)
             {
                 var value = -1;
                 products.TryGetValue(product, out value);
@@ -20,7 +19,10 @@
                 }
             }
 
-            @foreach ( KeyValuePair<Product, int> kvp in products)
+        decimal total = 0;
+    }
+    <div style="display: flex; flex-direction: column;">
+        @foreach ( KeyValuePair<Product, int> kvp in products)
             {
                 <div class="card">
                     <div style="display: flex; align-items: center; padding-top: 10px;">
@@ -48,23 +50,27 @@
                             </div>
                             <div style="margin-bottom: 16px;">
                                 <span><strong>Subtotal: </strong></span>
-                                <span><strong>@kvp.Key.DefaultPrice.ToString("C2")</strong></span>
+                                <span><strong>@((kvp.Key.DefaultPrice * kvp.Value).ToString("C2"))</strong></span>
                             </div>
                         </div>      
                         <img src="~/img/@(kvp.Key.Name).jpg" style="padding: 0 10px 0 10px;">
                     </div>
                 </div>
+                total += kvp.Key.DefaultPrice * kvp.Value;
             }
-        }
     </div>
-    <div style="display: flex; flex-direction: column; align-items: center; ">
-        <div class="card">
+    <div style="display: flex; flex-direction: column; padding-left: 50px">
+        <div class="card" style="padding: 0 10px 0 10px; position: sticky; top: 116px">
             <h1><strong>Summary</strong></h1>
-            @foreach ( KeyValuePair<Product, int> kvp in products)
-            {
-                <p>@(kvp.Key.Name): @kvp.Value</p>
+            @{
+                int sum = 0;
+                foreach ( KeyValuePair<Product, int> kvp in products)
+                {
+                    <p>@(kvp.Key.Name): @kvp.Value piece(s)</p>
+                    sum += kvp.Value;
+                }
+                <h5><strong>Total: @(total.ToString("C2")) (Items: @sum)</strong></h5>
             }
-            <h5><strong>Total: 500 Euro</strong></h5>
         </div>
     </div>
 </div>

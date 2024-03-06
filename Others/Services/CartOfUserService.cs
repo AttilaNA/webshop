@@ -72,6 +72,12 @@ namespace WebShop.Others.Services
             cart.Products.Add(product);
         }
 
+        public void RemoveFromCart(Product product, int userId)
+        {
+            var cart = _cartStorage.GetCartByUserId(userId);
+            cart.Products.Remove(product);
+        }
+
         public IEnumerable<Cart> GetAllCarts()
         {
             return _cartStorage.GetAll();

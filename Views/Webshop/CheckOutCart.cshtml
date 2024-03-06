@@ -41,7 +41,7 @@
                             <div style="margin-bottom: 16px;">
                                 <span>Quantity: </span>
                                 <span>
-                                    <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="CheckOutCart" asp-route-id="">-</a>
+                                    <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="DecrementProduct" asp-route-id="@kvp.Key.Id">-</a>
                                     <span>@kvp.Value</span>
                                     <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="IncrementProduct" asp-route-id="@kvp.Key.Id">+</a>
                                 </span>

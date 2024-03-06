@@ -3,29 +3,68 @@
 }
 @model Cart
 
-<div class="container">
-    @foreach (var product in Model.Products)
-    {
-        <div class="card card-in-cart" style="padding-top: 10px;" asp-controller="WebShop" asp-action="" method="">
-            <div>
-                <div class="product-in-cart">
-                    <div style="padding-left: 10px; display: flex; flex-direction: column; align-items: center">
-                        <h5 class="">Product @product.Id</h5>
-                        <h5 class="" style="align-self: flex-start">@product.Name</h5>
+<div class="container" style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        @{
+            Dictionary<Product, int> products = new Dictionary<Product, int>();
+            @foreach (var product in Model.Products)
+            {
+                var value = -1;
+                products.TryGetValue(product, out value);
+                if (value == -1)
+                {
+                    products.Add(product, 1);
+                } else
+                {
+                    products[product] = value + 1;
+                }
+            }
+
+            @foreach ( KeyValuePair<Product, int> kvp in products)
+            {
+                <div class="card">
+                    <div style="display: flex; align-items: center; padding-top: 10px;">
+                        <h5 style="margin-bottom: unset; padding-left: 10px">Product @(kvp.Key.Id): @kvp.Key.Name</h5>
+                        <div style="padding: 0 10px 0 10px;">
+                            <a type="button" class="btn btn-danger" asp-controller="WebShop" asp-action="CheckOutCart" asp-route-id="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <img src="~/img/@(product.Name).jpg" style="padding: 0 0 0 10px;">
-                    <div style="padding-left: 10px;">
-                        <p class="" style="align-self: flex-start">Category: @product.Category.Department</p>
-                        <p class="" style="align-self: flex-start">Supplier: @product.Supplier.Name</p>
-                        <p class="">
-                            <strong>Price: @product.DefaultPrice.ToString("C2")</strong>
-                        </p>
+                    <div class="card-in-cart" style="padding-top: 10px;">
+                        <div style="padding-left: 10px;">
+                            <p>Category: @kvp.Key.Category.Department</p>
+                            <p>Supplier: @kvp.Key.Supplier.Name</p>
+                            <p>Unit price: @kvp.Key.DefaultPrice.ToString("C2")</p>
+                            <div style="margin-bottom: 16px;">
+                                <span>Quantity: </span>
+                                <span>
+                                    <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="CheckOutCart" asp-route-id="">-</a>
+                                    <span>@kvp.Value</span>
+                                    <a type="button" class="btn btn-primary" asp-controller="WebShop" asp-action="IncrementProduct" asp-route-id="@kvp.Key.Id">+</a>
+                                </span>
+                            </div>
+                            <div style="margin-bottom: 16px;">
+                                <span><strong>Subtotal: </strong></span>
+                                <span><strong>@kvp.Key.DefaultPrice.ToString("C2")</strong></span>
+                            </div>
+                        </div>      
+                        <img src="~/img/@(kvp.Key.Name).jpg" style="padding: 0 10px 0 10px;">
                     </div>
                 </div>
-            </div>
-            <div style="padding-left: 10px;">
-                <input type="number" min="0" asp-for="@product.Id">
-            </div>
+            }
+        }
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; ">
+        <div class="card">
+            <h1><strong>Summary</strong></h1>
+            @foreach ( KeyValuePair<Product, int> kvp in products)
+            {
+                <p>@(kvp.Key.Name): @kvp.Value</p>
+            }
+            <h5><strong>Total: 500 Euro</strong></h5>
         </div>
-    }
+    </div>
 </div>
